@@ -16,7 +16,9 @@ const argv = require('yargs').options({
 const tempCiudad = async (direccion) => {
     const data = await getLugarLatLng(direccion);
     const temperatura = await getClima(data.lat, data.lng);
-    console.log(`La tempertatura actual de la ciudad ${direccion} es de ${temperatura}°C`);
+    return(`La tempertatura actual de la ciudad ${direccion} es de ${temperatura}°C`);
 }
 
-tempCiudad(argv.direccion);
+tempCiudad(argv.direccion)
+    .then(resp => console.log(resp))
+    .catch(e => console.log(e));
