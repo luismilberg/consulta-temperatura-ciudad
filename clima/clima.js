@@ -7,7 +7,7 @@ const getClima = async (lat,lng) => {
     const params = `?lat=${lat}&lon=${lng}&appid=${appId}&units=metric`;
     const resp = await axios.get( urlBase + params );
     if(resp.data.length === 0){
-        throw new Error(`Error!!`);
+        throw new Error(`Error de API de clima!!`);
     }
     return resp.data.main.temp;
 }
